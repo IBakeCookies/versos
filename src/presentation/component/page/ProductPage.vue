@@ -23,7 +23,7 @@ function onDelete(e: Event, productId: number): void {
 </script>
 
 <template>
-    <div class="p-4 bg-stone-100 rounded-xl flex items-center gap-4">
+    <div class="p-4 bg-stone-100 rounded-xl flex items-center gap-4 flex-wrap">
         <RouterLink to="/products/create">
             <Button>Create product</Button>
         </RouterLink>
@@ -46,12 +46,12 @@ function onDelete(e: Event, productId: number): void {
         <li
             v-for="product in data.data"
             :key="product.id"
-            class="flex items-center justify-between"
+            class="flex items-center justify-between flex-wrap gap-4"
         >
             {{ product.name }} - {{ product.description }} - {{ product.price }}$
 
-            <div class="flex items-center ml-4">
-                <RouterLink class="ml-4" :to="`/products/edit/${product.id}`">
+            <div class="flex items-center gap-4">
+                <RouterLink  :to="`/products/edit/${product.id}`">
                     <Button>Edit</Button>
                 </RouterLink>
 

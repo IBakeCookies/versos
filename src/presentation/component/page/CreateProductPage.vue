@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import CreateProductForm from '@component/form/CreateProductForm.vue';
 import Button from '@component/Button.vue';
-
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import CreateProductForm from '@component/form/CreateProductForm.vue';
 import { useFetch } from '@vueuse/core';
+import CreateProductForm from '@component/form/CreateProductForm.vue';
+import Button from '@component/Button.vue';
 
 interface Props {
     id: string;
@@ -20,8 +21,13 @@ function onUpdate(payload: any): void {
         <p class="text-red-500">Error: {{ error.message }}</p>
     </div>
 
+    <RouterLink to="/products">
+        <Button variant="secondary">Back</Button>
+    </RouterLink>
+
     <CreateProductForm
         v-if="data"
+        class="mt-4"
         @update="onUpdate"
         type="update"
         :id="id"

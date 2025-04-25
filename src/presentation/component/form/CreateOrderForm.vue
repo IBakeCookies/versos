@@ -142,20 +142,24 @@ function onRemoveProduct(productId: number): void {
 
         <Input name="shippingAddress" type="text" placeholder="Shipping Address" :required="true" />
 
-        <fieldset class="flex items-center gap-4" v-for="product in productRows">
+        <fieldset v-for="product in productRows">
             <input hidden :value="product.id" />
             <input hidden :value="product.quantity" />
 
             <div
-                class="flex gap-4 border-2 border-stone-200 py-2 px-4 rounded-xl w-full items-center"
+                class="flex-col sm:flex-row flex flex-wrap gap-4 border-2 border-stone-200 py-2 px-4 rounded-xl w-full items-start sm:items-center"
             >
                 <label> Product ID: {{ product.id }} </label>
 
-                -
+                <div class="hidden sm:inline">-</div>
 
-                <label class="mr-4">Quantity: {{ product.quantity }}</label>
+                <label>Quantity: {{ product.quantity }}</label>
 
-                <Button type="button" class="ml-auto" @click="onRemoveProduct(product.id)">
+                <Button
+                    type="button"
+                    class="ml-0 w-full sm:w-auto sm:ml-auto"
+                    @click="onRemoveProduct(product.id)"
+                >
                     Remove product
                 </Button>
             </div>
