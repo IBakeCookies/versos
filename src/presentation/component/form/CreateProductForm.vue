@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // create seperate forms to create and update a product instead
-import { computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import Input from '@component/Input.vue';
 import Button from '@component/Button.vue';
 
@@ -32,43 +32,9 @@ const buttonText = computed(() => {
     return props.type === 'create' ? 'Create Product' : 'Update Product';
 });
 
-const productName = defineModel('productName', {
-    default: '',
-});
-const productPrice = defineModel('productPrice', {
-    default: 0,
-});
-const productDescription = defineModel('productDescription', {
-    default: '',
-});
-
-// unfortunate things
-watch(
-    () => props.name,
-    (newValue) => {
-        if (!newValue) return;
-        productName.value = newValue;
-    },
-    { immediate: true },
-);
-
-watch(
-    () => props.price,
-    (newValue) => {
-        if (!newValue) return;
-        productPrice.value = newValue;
-    },
-    { immediate: true },
-);
-
-watch(
-    () => props.description,
-    (newValue) => {
-        if (!newValue) return;
-        productDescription.value = newValue;
-    },
-    { immediate: true },
-);
+const productName = ref(props.name || '');
+const productPrice = ref(props.price || 0);
+const productDescription = ref(props.description || '');
 
 function handleSubmit(event: Event): void {
     event.preventDefault();
