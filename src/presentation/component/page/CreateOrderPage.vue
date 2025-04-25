@@ -17,9 +17,21 @@ const prouctsIds: ComputedRef<number[]> = computed(() => {
     return data.value.data.map((product) => product.id);
 });
 
-function onCreate(payload: any): void {
-    // Handle the create product event API call
+async function onCreate(payload: any): Promise<void> {
     console.log('Order created:', payload);
+
+    // something liket this
+    // try {
+    //     fetch('/api/orders', {
+    //         method: 'POST',
+    //         body: JSON.stringify(payload),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    // } catch (error) {
+    //     console.error('Error creating order:', error);
+    // }
 
     setTimeout(() => {
         router.go(-1);
